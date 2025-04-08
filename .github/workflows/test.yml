@@ -13,16 +13,25 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Set up Node.js environment
+      - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '18'
 
-      - name: Install project dependencies
+      - name: Install dependencies
         run: npm install
 
       - name: Install Playwright browsers
         run: npx playwright install --with-deps
 
-      - name: Execute Cucumber tests
-        run: npx cucumber-js features/**/*.feature
+      - name: Build app
+        run: npm run build
+
+      - name: Start the app
+        run: npm run start &
+
+      - name: Wait for app to be ready
+        run: sleep 10
+
+      - name: Run end-to-end tests
+        run: npm run test:e2e

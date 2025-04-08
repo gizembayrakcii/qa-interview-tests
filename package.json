@@ -1,15 +1,19 @@
 {
-  "name": "playwright-tests",
-  "version": "1.0.0",
-  "main": "index.js",
+  "name": "qa-homework",
+  "version": "0.1.0",
+  "private": true,
   "scripts": {
-  "test": "npx cucumber-js --require features/**/*.js"
-
+    "dev": "next dev --turbopack",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "test:e2e": "npx cucumber-js --require features/**/*.js"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": "",
+  "dependencies": {
+    "next": "^15.2.4",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
   "devDependencies": {
     "@cucumber/cucumber": "^11.2.0",
     "@playwright/test": "^1.51.1"
