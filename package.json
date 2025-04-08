@@ -7,10 +7,10 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "test:e2e": "npx cucumber-js --require features/**/*.js"
+    "test:e2e": "npx cucumber-js features/**/*.feature --require features/**/*.js"
   },
   "dependencies": {
-    "next": "^15.2.4",
+    "next": "^15.2.4", 
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },
