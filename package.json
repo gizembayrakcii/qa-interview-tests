@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "test:e2e": "npx cucumber-js features/**/*.feature --require features/**/*.js"
+    "test:e2e": "npx cucumber-js --require features/steps/**/*.js features/**/*.feature"
   },
   "dependencies": {
     "next": "^15.2.4", 
