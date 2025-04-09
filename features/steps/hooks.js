@@ -13,14 +13,14 @@ class CustomWorld {
 }
 
 setWorldConstructor(CustomWorld);
-
-//Before and After hooks to open and close the browser automatically.
+//Before hooks to open browser automatically
 Before(async function () {
   this.browser = await chromium.launch({ headless: true });
   this.context = await this.browser.newContext();
   this.page = await this.context.newPage();
 });
 
+//After hooks to close browser automatically
 After(async function () {
   await this.page.close();
   await this.context.close();
