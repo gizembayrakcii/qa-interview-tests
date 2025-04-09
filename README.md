@@ -28,13 +28,13 @@ The tests cover login, counter, and logout functionalities.
 ## Running Tests Locally
 
 Make sure the app is running locally on `http://localhost:3000`:
-
 ```bash
 npm install
 npm run build
 npm start
-
+```
 
 Then run the tests in a separate terminal:
+```bash
 npm run test:e2e
 
