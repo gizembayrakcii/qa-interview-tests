@@ -1,6 +1,9 @@
 const { Before, After, setWorldConstructor } = require('@cucumber/cucumber');
 const { chromium } = require('playwright');
 
+//This file sets up Playwright browser automation for Cucumber scenarios.
+
+//CustomWorld stores the browser, context, and page for use in test steps.
 class CustomWorld {
   constructor() {
     this.browser = null;
@@ -11,6 +14,7 @@ class CustomWorld {
 
 setWorldConstructor(CustomWorld);
 
+//Before and After hooks to open and close the browser automatically.
 Before(async function () {
   this.browser = await chromium.launch({ headless: true });
   this.context = await this.browser.newContext();

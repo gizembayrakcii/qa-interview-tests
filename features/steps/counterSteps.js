@@ -1,6 +1,7 @@
 const { expect } = require('@playwright/test');
 const { When, Then } = require('@cucumber/cucumber');
 
+
 When('the user clicks the increment button a random number of times', async function () {
   const page = this.page;
   this.randomNumber = Math.floor(Math.random() * 100) + 1;
@@ -9,6 +10,7 @@ When('the user clicks the increment button a random number of times', async func
   }
 });
 
+//Verify the counter reflects the number of increment clicks
 Then('the counter should reflect the correct number of increments', async function () {
   const page = this.page;
   const counterValue = await page.locator('p').textContent();
@@ -21,6 +23,7 @@ When('the user clicks the reset button', async function () {
   await page.click('button:text("Reset")');
 });
 
+//Verify the reset button works properly
 Then('the counter should reset to 0', async function () {
   const page = this.page;
   const counterValue = await page.locator('p').textContent();
@@ -36,6 +39,7 @@ When('the user clicks the decrement button a random number of times', async func
   }
 });
 
+//Verify the counter reflects the number of decrement clicks
 Then('the counter should reflect the correct number of decrements', async function () {
   const page = this.page;
   const counterValue = await page.locator('p').textContent();
