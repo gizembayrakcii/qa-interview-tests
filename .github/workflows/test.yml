@@ -1,37 +1,48 @@
 name: Run Playwright Cucumber Tests
 
+# Trigger the workflow on every push and pull request to any branch
 on:
   push:
-    branches: [main]
-  pull_request:
+    branches: [main]  # Trigger on push to main branch
+  pull_request:        # Trigger on any pull request
 
 jobs:
   test:
+    # Choose the operating system for the workflow runner
+    # Options: ubuntu-latest, windows-latest, macos-latest
     runs-on: ubuntu-latest
-
+    
     steps:
+      # Step 1: Pull the latest code from the repository
       - name: Checkout repository
         uses: actions/checkout@v3
 
+      # Step 2: Set up Node.js (v18) environment on the runner
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '18'
 
+      # Step 3: Install all project dependencies from package.json
       - name: Install dependencies
         run: npm install
 
+      # Step 4: Install Playwright and its required browser binaries
       - name: Install Playwright browsers
         run: npx playwright install --with-deps
 
+      # Step 5: Build the Next.js application for production
       - name: Build app
         run: npm run build
 
+      # Step 6: Start the application server (in background)
       - name: Start the app
         run: npm run start &
 
+      # Step 7: Wait for the app to be fully up before testing
       - name: Wait for app to be ready
         run: sleep 10
 
+      # Step 8: Run all end-to-end tests with Cucumber.js
       - name: Run end-to-end tests
         run: npm run test:e2e
